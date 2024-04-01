@@ -14,4 +14,4 @@ AL NOMBRE DE LA RAMA PONERLE SU NOMBRE COMPLETO Y LEGAJO
 SIEMPRE MANTENER SU RAMA(BRANCH) ACTUALIZADO CON LA INSTRUCCION DE TRAER(PULL)
 Siempre traten de usar la extesion de Visual Studio para Git. Si no la encuentran pueden buscarla en el menu general.
 
-
+Actualizado 01.04.24
