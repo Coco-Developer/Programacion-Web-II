@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\ProgramacionWebII-Actividad-Complementaria-CSharp.csproj",
-      "projectName": "ProgramacionWebII-Actividad-Complementaria-CSharp",
-      "projectPath": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\ProgramacionWebII-Actividad-Complementaria-CSharp.csproj",
+      "projectUniqueName": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\LibreriaDeClases.csproj",
+      "projectName": "LibreriaDeClases",
+      "projectPath": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\LibreriaDeClases.csproj",
       "packagesPath": "C:\\Users\\COCO\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\obj\\",
       "projectStyle": "PackageReference",

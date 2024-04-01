@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProgramacionWebII_Actividad_Complementaria_CSharp
+namespace LibreriaDeClases
 {
     public class Usuario
     {
@@ -18,29 +18,17 @@ namespace ProgramacionWebII_Actividad_Complementaria_CSharp
 
         public Usuario(int id, DateTime nacimiento, int edad, string nombre, string apellido)
         {
-            Id = id;
+            
             Nacimiento = nacimiento;
             Edad = edad;
             Nombre = nombre;
             Apellido = apellido;
+            Id = id;
 
         }
 
 
-        public void ComprarHamburguesa(Hamburguesa hamburguesa)
-
-            {
-
-               if (hamburguesa == null)
-               {
-
-                throw new ArgumentNullException(nameof(hamburguesa), "La hamburguesa no puede ser nula");
-
-                Console.WriteLine($"{Nombre} ha comprado {hamburguesa.Nombre}");
-               }
-
-
-            }
+     
 
 
     }

@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using ProgramacionWebII_Actividad_Complementaria_CSharp;
+﻿using DLL;
+using LibreriaDeClases;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
@@ -12,66 +10,61 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class HamburguesaController : ControllerBase
     {
+        private readonly HamburguesaDLL hamburguesaDLL;
 
-          private static List<Hamburguesa> hamburguesas = new ()
+        public HamburguesaController()
         {
-            new Hamburguesa(1, "Hamburguesa Clásica", 100, "Una hamburguesa simple con carne, lechuga y tomate"),
-            new Hamburguesa(2, "Hamburguesa Doble", 150, "Una hamburguesa doble con carne, queso, lechuga y tomate"),
-            new Hamburguesa(3, "Hamburguesa Vegetariana", 120, "Una hamburguesa vegetariana con una patty de garbanzos y vegetales")
-        };
+            hamburguesaDLL = new HamburguesaDLL();
+        }
 
-            // GET: api/Hamburguesa
-            [HttpGet]
-            public ActionResult<IEnumerable<Hamburguesa>> Get()
-            {
-                return Ok(hamburguesas);
-            }
+        // GET: api/Hamburguesa
+        [HttpGet]
+        public List<Hamburguesa> Get()
+        {
+            return hamburguesaDLL.ObtenerTodasLasHamburguesas();
+        }
 
-            // GET: api/Hamburguesa/5
-            [HttpGet("{id}")]
-            public ActionResult<Hamburguesa> Get(int id)
+        // GET: api/Hamburguesa/{id}
+        [HttpGet("{id}")]
+        public ActionResult<Hamburguesa> Get(int id)
+        {
+            var hamburguesa = hamburguesaDLL.ObtenerHamburguesaPorId(id);
+            if (hamburguesa == null)
             {
-                var hamburguesa = hamburguesas.Find(h => h.Id == id);
-                if (hamburguesa == null)
-                {
-                    return NotFound();
-                }
-                return Ok(hamburguesa);
+                return NotFound();
             }
+            return Ok(hamburguesa);
+        }
 
-            // POST: api/Hamburguesa
-            [HttpPost]
-            public ActionResult<Hamburguesa> Post([FromBody] Hamburguesa nuevaHamburguesa)
-            {
-                hamburguesas.Add(nuevaHamburguesa);
-                return CreatedAtAction(nameof(Get), new { id = nuevaHamburguesa.Id }, nuevaHamburguesa);
-            }
+        // POST: api/Hamburguesa
+        [HttpPost]
+        public ActionResult<Hamburguesa> Post([FromBody] Hamburguesa hamburguesa)
+        {
+            hamburguesaDLL.AgregarHamburguesa(hamburguesa);
+            return CreatedAtAction(nameof(Get), new { id = hamburguesa.IdHamburguesa }, hamburguesa);
+        }
 
-            // PUT: api/Hamburguesa/5
-            [HttpPut("{id}")]
-            public IActionResult Put(int id, [FromBody] Hamburguesa hamburguesaActualizada)
+        // PUT: api/Hamburguesa/{id}
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Hamburguesa hamburguesa)
+        {
+            if (id != hamburguesa.IdHamburguesa)
             {
-                var index = hamburguesas.FindIndex(h => h.Id == id);
-                if (index == -1)
-                {
-                    return NotFound();
-                }
-                hamburguesas[index] = hamburguesaActualizada;
-                return NoContent();
+                return BadRequest();
             }
+            hamburguesaDLL.ActualizarHamburguesa(hamburguesa);
+            return NoContent();
+        }
 
-            // DELETE: api/Hamburguesa/5
-            [HttpDelete("{id}")]
-            public IActionResult Delete(int id)
+        // DELETE: api/Hamburguesa/{id}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            if (!hamburguesaDLL.EliminarHamburguesa(id))
             {
-                var hamburguesa = hamburguesas.Find(h => h.Id == id);
-                if (hamburguesa == null)
-                {
-                    return NotFound();
-                }
-                hamburguesas.Remove(hamburguesa);
-                return NoContent();
+                return NotFound();
             }
-        
+            return NoContent();
+        }
     }
 }
