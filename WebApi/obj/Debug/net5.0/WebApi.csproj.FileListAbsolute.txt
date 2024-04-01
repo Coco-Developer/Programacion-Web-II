@@ -18,8 +18,6 @@ C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacio
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\ProgramacionWebII-Actividad-Complementaria-CSharp.dll
-C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\ProgramacionWebII-Actividad-Complementaria-CSharp.pdb
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\obj\Debug\net5.0\staticwebassets\WebApi.StaticWebAssets.Manifest.cache
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\obj\Debug\net5.0\staticwebassets\WebApi.StaticWebAssets.xml
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\obj\Debug\net5.0\scopedcss\bundle\WebApi.styles.css
@@ -29,3 +27,7 @@ C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacio
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\obj\Debug\net5.0\ref\WebApi.dll
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\obj\Debug\net5.0\WebApi.pdb
 C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\obj\Debug\net5.0\WebApi.genruntimeconfig.cache
+C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\DLL.dll
+C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\LibreriaDeClases.dll
+C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\DLL.pdb
+C:\Users\COCO\Desktop\DESARROLLO\tercer semestre\Programacion Web II\Programacion-Web-II\WebApi\bin\Debug\net5.0\LibreriaDeClases.pdb

@@ -9,6 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BLL\DLL.csproj" />
+    <ProjectReference Include="..\ProgramacionWebII-Actividad-Complementaria-CSharp\LibreriaDeClases.csproj" />
     <ProjectReference Include="..\ProgramacionWebII-Actividad-Complementaria-CSharp\ProgramacionWebII-Actividad-Complementaria-CSharp.csproj" />
   </ItemGroup>
 

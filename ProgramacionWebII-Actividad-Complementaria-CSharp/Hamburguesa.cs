@@ -1,33 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ProgramacionWebII_Actividad_Complementaria_CSharp
+namespace LibreriaDeClases
+    
 {
     public class Hamburguesa
     {
-        public int Id { get; set; }
+        public int IdHamburguesa { get; set; }
         public string Nombre { get; set; }
-        public int Precio { get; set; }
-        public string Descripcion { get; set; }
+        public double Precio { get; set; }
 
-        // Constructor
-        public Hamburguesa(int id, string nombre, int precio, string descripcion)
+
+
+
+        public Hamburguesa(int idHamburguesa, string nombre, double precio)
         {
-            Id = id;
+
             Nombre = nombre;
             Precio = precio;
-            Descripcion = descripcion;
+            IdHamburguesa = idHamburguesa;
+            
         }
 
-        // Método para mostrar detalles de la hamburguesa
-        public void MostrarDetalles()
 
-        {
-            Console.WriteLine($"ID: {Id}, Nombre: {Nombre}, Precio: {Precio:C}, Descripción: {Descripcion}");
-        }
     }
-
 
 
 
