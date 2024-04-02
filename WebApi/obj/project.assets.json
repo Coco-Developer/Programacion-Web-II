@@ -98,16 +98,6 @@
         "runtime": {
           "bin/placeholder/LibreriaDeClases.dll": {}
         }
-      },
-      "ProgramacionWebII-Actividad-Complementaria-CSharp/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.1",
-        "compile": {
-          "bin/placeholder/ProgramacionWebII-Actividad-Complementaria-CSharp.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ProgramacionWebII-Actividad-Complementaria-CSharp.dll": {}
-        }
       }
     }
   },
@@ -228,18 +218,12 @@
       "type": "project",
       "path": "../ProgramacionWebII-Actividad-Complementaria-CSharp/LibreriaDeClases.csproj",
       "msbuildProject": "../ProgramacionWebII-Actividad-Complementaria-CSharp/LibreriaDeClases.csproj"
-    },
-    "ProgramacionWebII-Actividad-Complementaria-CSharp/1.0.0": {
-      "type": "project",
-      "path": "../ProgramacionWebII-Actividad-Complementaria-CSharp/ProgramacionWebII-Actividad-Complementaria-CSharp.csproj",
-      "msbuildProject": "../ProgramacionWebII-Actividad-Complementaria-CSharp/ProgramacionWebII-Actividad-Complementaria-CSharp.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "DLL >= 1.0.0",
       "LibreriaDeClases >= 1.0.0",
-      "ProgramacionWebII-Actividad-Complementaria-CSharp >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -280,9 +264,6 @@
             },
             "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\LibreriaDeClases.csproj": {
               "projectPath": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\LibreriaDeClases.csproj"
-            },
-            "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\ProgramacionWebII-Actividad-Complementaria-CSharp.csproj": {
-              "projectPath": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\ProgramacionWebII-Actividad-Complementaria-CSharp.csproj"
             }
           }
         }
