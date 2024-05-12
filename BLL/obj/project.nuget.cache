@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kFTz2RVVAjnw8MV7Vsk/9Dyfe+kaTuC5El9wMDaTn0KL5pE2eoTObnYusgzVYsXsmuW9OqkV12JwGCrzhnMr9Q==",
+  "dgSpecHash": "QkBx0xkctyaV+JEB3ySfg5pcNSRELmKWeVEYmiQXj9su68XBiSA9CYYyHKFbN+69G9LTWC5jwqJwwSWQTnjQVg==",
   "success": true,
   "projectFilePath": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\BLL\\DLL.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\COCO\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\COCO\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\COCO\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\COCO\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

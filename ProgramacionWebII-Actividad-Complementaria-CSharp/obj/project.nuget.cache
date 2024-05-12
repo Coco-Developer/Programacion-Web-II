@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9uMHaIkIgotq+cpAREJ1lBUWfNw+3DaKO9jJz4ePz2YepDfoK56aVxH3dWbo1CPkfpHL7J1UpwjilfKi7DvZtA==",
+  "dgSpecHash": "oevNpM5FT8q0VjnvDdmk3oCFuBgiau5XnuFsRTwiuzW27T8WJFJ1C9mZpuCQS9j75gaAeHWBmllv9lc781DLgg==",
   "success": true,
   "projectFilePath": "C:\\Users\\COCO\\Desktop\\DESARROLLO\\tercer semestre\\Programacion Web II\\Programacion-Web-II\\ProgramacionWebII-Actividad-Complementaria-CSharp\\LibreriaDeClases.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\COCO\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

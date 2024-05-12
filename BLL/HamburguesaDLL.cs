@@ -1,8 +1,7 @@
-﻿using System;
+﻿using LibreriaDeClases;
+using System;
 using System.Collections.Generic;
-using LibreriaDeClases;
-
-
+using System.Linq;
 
 namespace DLL
 {
@@ -11,49 +10,77 @@ namespace DLL
 
 
 
+        // Lista de hamburguesas con datos preestablecidos
         private static readonly List<Hamburguesa> hamburguesas = new()
         {
-            new Hamburguesa(3, "Cheddar", 3599),
-            new Hamburguesa(4, "Vegetariana", 4699),
-            new Hamburguesa(1, "Doble bacon", 5399),
+            new Hamburguesa("Cheddar", 3599),
+            new Hamburguesa("Vegetariana", 4699),
+            new Hamburguesa("Doble bacon", 5399)
         };
+        private static readonly object _bloqueo;
 
-        public List<Hamburguesa> ObtenerTodasLasHamburguesas()
+        // Método para agregar una hamburguesa
+        public static void AgregarHamburguesa(Hamburguesa hamburguesa)
+        {
+
+            hamburguesas.Add(hamburguesa);
+
+        }
+
+
+        // Método para obtener todas las hamburguesas
+        public static List<Hamburguesa> ObtenerTodasLasHamburguesas()
         {
             return hamburguesas;
         }
 
-        public Hamburguesa ObtenerHamburguesaPorId(int id)
+        // Método para actualizar una hamburguesa
+        public static void ActualizarHamburguesa(int id, Hamburguesa hamburguesa)
         {
-            return hamburguesas.Find(h => h.IdHamburguesa == id);
-        }
-
-        public void AgregarHamburguesa(Hamburguesa hamburguesa)
-        {
-            hamburguesas.Add(hamburguesa);
-        }
-
-        public void ActualizarHamburguesa(Hamburguesa hamburguesa)
-        {
-            int index = hamburguesas.FindIndex(h => h.IdHamburguesa == hamburguesa.IdHamburguesa);
-            if (index != -1)
+            lock (_bloqueo)
             {
-                hamburguesas[index] = hamburguesa;
+                // Busca la hamburguesa por su ID
+                var hamburguesaExistente = hamburguesas.FirstOrDefault(h => h.IdHamburguesa == id);
+
+                // Verifica si se encontró la hamburguesa
+                if (hamburguesaExistente != null)
+                {
+                    // Actualiza los campos de la hamburguesa existente
+                    hamburguesaExistente.Nombre = hamburguesa.Nombre;
+                    hamburguesaExistente.Precio = hamburguesa.Precio;
+                }
+                else
+                {
+                    throw new ArgumentException($"No se encontró ninguna hamburguesa con el ID {id}.");
+                }
             }
         }
 
-        public bool EliminarHamburguesa(int id)
+
+
+        // Método para eliminar una hamburguesa por su ID
+        public static bool EliminarHamburguesa(int id)
         {
-            Hamburguesa hamburguesa = hamburguesas.Find(h => h.IdHamburguesa == id);
+            Hamburguesa hamburguesa = hamburguesas.SingleOrDefault(h => h.IdHamburguesa == id);
             if (hamburguesa != null)
             {
                 hamburguesas.Remove(hamburguesa);
                 return true;
             }
-            return false;
+            else
+            {
+                return false; // No se encontró la hamburguesa con el ID proporcionado
+            }
         }
 
+        public static object ObtenerHamburguesaPorId(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public static void ActualizarHamburguesa(Hamburguesa hamburguesa)
+        {
+            throw new NotImplementedException();
+        }
     }
-
- }
+}

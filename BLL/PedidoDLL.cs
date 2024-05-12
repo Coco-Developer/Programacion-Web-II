@@ -1,58 +1,78 @@
-﻿using System;
+﻿using LibreriaDeClases;
+using System;
 using System.Collections.Generic;
-using LibreriaDeClases;
 
 namespace DLL
 {
     public class PedidoDLL
     {
+ 
 
+        // Lista de pedidos
+        private static readonly List<Pedido> pedidos = new();
 
-        private static readonly List<Pedido> pedidos = new()
+        // Objeto para controlar el acceso a la lista de pedidos de forma segura en entornos multiproceso
+        private static readonly object _bloqueo = new();
+
+        // Método para agregar un pedido
+        public static void AgregarPedido(int usuarioId, int hamburguesaId, DateTime fechaPedido, int cantidad)
         {
-           new Pedido(1, 1, 1, DateTime.Now, 2),
-           new Pedido(2, 2, 2, DateTime.Now, 1),
-           new Pedido(3, 3, 3, DateTime.Now, 3),
-        };
+            lock (_bloqueo)
+            {
+                // Crear un nuevo pedido con el próximo ID
+                var nuevoPedido = new Pedido(usuarioId, hamburguesaId, fechaPedido, cantidad);
+                pedidos.Add(nuevoPedido);
+            }
+        }
 
-        public List<Pedido> ObtenerTodosLosPedidos()
+        // Método para obtener todos los pedidos
+        public static List<Pedido> ObtenerTodosLosPedidos()
         {
             return pedidos;
         }
 
-        public List<Pedido> ObtenerPedidoPorId(int id)
+        // Método para obtener un pedido por su ID
+        public static Pedido ObtenerPedidoPorId(int id)
         {
-            return pedidos.FindAll(p => p.Id == id);
+            return pedidos.Find(p => p.Id == id);
         }
 
-        public void AgregarPedido(Pedido pedido)
+        // Método para actualizar un pedido
+        public static void ActualizarPedido(Pedido pedidoActualizado)
         {
-            pedidos.Add(pedido);
-        }
-
-        public void ActualizarCantidad(int id, int nuevaCantidad)
-        {
-            Pedido pedido = pedidos.Find(p => p.Id == id);
-            if (pedido != null)
+            lock (_bloqueo)
             {
-                pedido.Cantidad = nuevaCantidad;
+                var pedidoExistente = pedidos.Find(p => p.Id == pedidoActualizado.Id);
+                if (pedidoExistente != null)
+                {
+                    // Actualizar los datos del pedido existente
+                    pedidoExistente.UsuarioId = pedidoActualizado.UsuarioId;
+                    pedidoExistente.HamburguesaId = pedidoActualizado.HamburguesaId;
+                    pedidoExistente.FechaPedido = pedidoActualizado.FechaPedido;
+                    pedidoExistente.Cantidad = pedidoActualizado.Cantidad;
+                }
+                else
+                {
+                    throw new ArgumentException($"No se encontró ningún pedido con el ID {pedidoActualizado.Id}.");
+                }
             }
         }
 
-        public bool EliminarPedido(int id)
+        // Método para eliminar un pedido por su ID
+        public static void EliminarPedido(int id)
         {
-            Pedido pedido = pedidos.Find(p => p.Id == id);
-            if (pedido != null)
+            lock (_bloqueo)
             {
-                pedidos.Remove(pedido);
-                return true;
+                var pedidoAEliminar = pedidos.Find(p => p.Id == id);
+                if (pedidoAEliminar != null)
+                {
+                    pedidos.Remove(pedidoAEliminar);
+                }
+                else
+                {
+                    throw new ArgumentException($"No se encontró ningún pedido con el ID {id}.");
+                }
             }
-            return false;
         }
-
-
-
     }
-
-
 }

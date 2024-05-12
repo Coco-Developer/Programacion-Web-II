@@ -3,10 +3,8 @@ using LibreriaDeClases;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-
 namespace WebApi.Controllers
 {
-
     [ApiController]
     [Route("[controller]")]
     public class UsuarioController : ControllerBase
@@ -18,44 +16,47 @@ namespace WebApi.Controllers
             usuarioDLL = new UsuarioDLL();
         }
 
-        // GET: api/Usuario
+        // GET: /Usuario
         [HttpGet]
-        public List<Usuario> Get()
+        public ActionResult<List<Usuario>> Get()
         {
-            return usuarioDLL.ObtenerTodosLosUsuarios();
+            var usuarios = UsuarioDLL.ObtenerTodosLosUsuarios();
+            if (usuarios.Count == 0)
+            {
+                return NotFound("No se encontraron usuarios.");
+            }
+            return Ok(usuarios);
         }
 
-        // GET: api/Usuario/{id}
+        // GET: /Usuario/{id}
         [HttpGet("{id}")]
         public ActionResult<Usuario> Get(int id)
         {
-            var usuario = usuarioDLL.ObtenerUsuarioPorId(id);
+            var usuario = UsuarioDLL.ObtenerUsuarioPorId(id);
             if (usuario == null)
             {
-                return NotFound();
+                return NotFound($"Usuario con ID {id} no encontrado.");
             }
             return Ok(usuario);
         }
 
-        // POST: api/Usuario
+        // POST: /Usuario
         [HttpPost]
         public ActionResult<Usuario> Post([FromBody] Usuario usuario)
         {
-            usuarioDLL.AgregarUsuario(usuario);
+            UsuarioDLL.AgregarUsuario(usuario);
             return CreatedAtAction(nameof(Get), new { id = usuario.Id }, usuario);
         }
 
-        // DELETE: api/Usuario/{id}
+        // DELETE: /Usuario/{id}
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (!usuarioDLL.EliminarUsuario(id))
+            if (!UsuarioDLL.EliminarUsuario(id))
             {
-                return NotFound();
+                return NotFound($"Usuario con ID {id} no encontrado.");
             }
             return NoContent();
         }
     }
-
-
 }

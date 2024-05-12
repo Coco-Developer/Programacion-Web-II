@@ -1,6 +1,7 @@
 ﻿using DLL;
 using LibreriaDeClases;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace WebApi.Controllers
@@ -9,61 +10,76 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class PedidoController : ControllerBase
     {
-        private readonly PedidoDLL pedidoDLL;
-
-        public PedidoController()
-        {
-            pedidoDLL = new PedidoDLL();
-        }
-
-        // GET: api/Pedido
+        // GET: /Pedido
         [HttpGet]
-        public List<Pedido> Get()
+        public ActionResult<List<Pedido>> Get()
         {
-            return pedidoDLL.ObtenerTodosLosPedidos();
+            // Obtener todos los pedidos
+            var pedidos = PedidoDLL.ObtenerTodosLosPedidos();
+            if (pedidos.Count == 0)
+            {
+                return NotFound("No se encontraron pedidos.");
+            }
+            return Ok(pedidos);
         }
 
-        // GET: api/Pedido/{id}
+        // GET: /Pedido/{id}
         [HttpGet("{id}")]
         public ActionResult<Pedido> Get(int id)
         {
-            var pedido = pedidoDLL.ObtenerPedidoPorId(id);
+            // Obtener un pedido por su ID
+            var pedido = PedidoDLL.ObtenerPedidoPorId(id);
             if (pedido == null)
             {
-                return NotFound();
+                return NotFound($"Pedido con ID {id} no encontrado.");
             }
             return Ok(pedido);
         }
 
-        // POST: api/Pedido
+        // POST: /Pedido
         [HttpPost]
         public ActionResult<Pedido> Post([FromBody] Pedido pedido)
         {
-            pedidoDLL.AgregarPedido(pedido);
+            // Agregar un nuevo pedido
+            PedidoDLL.AgregarPedido(pedido.UsuarioId, pedido.HamburguesaId, pedido.FechaPedido, pedido.Cantidad);
             return CreatedAtAction(nameof(Get), new { id = pedido.Id }, pedido);
         }
 
-        // PUT: api/Pedido/{id}
+        // PUT: /Pedido/{id}
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Pedido pedido)
+        public IActionResult Put(int id, [FromBody] Pedido pedido)
         {
             if (id != pedido.Id)
             {
-                BadRequest();
+                return BadRequest("El ID del pedido en el cuerpo de la solicitud no coincide con el ID de la URL.");
             }
-            pedidoDLL.ActualizarCantidad(id, pedido.Cantidad);
+
+            // Actualizar un pedido
+            try
+            {
+                PedidoDLL.ActualizarPedido(pedido);
+                return NoContent();
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
-        // DELETE: api/Pedido/{id}
+        // DELETE: /Pedido/{id}
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (!pedidoDLL.EliminarPedido(id))
+            // Eliminar un pedido por su ID
+            try
             {
-                return NotFound();
+                PedidoDLL.EliminarPedido(id);
+                return NoContent();
             }
-            return NoContent();
+            catch (ArgumentException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
-
 }
